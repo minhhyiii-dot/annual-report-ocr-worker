@@ -1,0 +1,35 @@
+{
+  "schema_version": "2.0",
+  "job_id": "synthetic-demo",
+  "required_worker_profile": "paddleocr-vl-v1.6-raw-maxtext-r1",
+  "sources": [
+    {
+      "source_id": "synthetic-report-2025",
+      "ticker": "DEMO",
+      "segment": "VNMidcap",
+      "lane": "scan",
+      "total_pages": 1
+    }
+  ],
+  "assets": [
+    {
+      "source_id": "synthetic-report-2025",
+      "ticker": "DEMO",
+      "asset_id": "page-001",
+      "input_path": "input/DEMO/page-001.png",
+      "sha256": "9cc127a73a6e8926bb71da909636dde40e3a11e441b5087a3ed25d1a1a3cfa1e",
+      "required_content": true,
+      "page_number": 1
+    }
+  ],
+  "probe": {
+    "source_id": "synthetic-report-2025",
+    "ticker": "DEMO",
+    "asset_id": "page-001",
+    "input_path": "input/DEMO/page-001.png"
+  },
+  "expected_outputs": {
+    "markdown_suffix": ".md",
+    "json_suffix": "_res.json"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "schema_version": "2.1",
+  "uv": {
+    "version": "0.11.28",
+    "installer_url": "https://astral.sh/uv/0.11.28/install.ps1",
+    "installer_sha256": "09ac738e5c5eea1d94284b80ceb49b81097891218a79751d08116cd8552b492d"
+  },
+  "python": {
+    "implementation": "CPython",
+    "version": "3.12.10",
+    "architecture": "64bit"
+  },
+  "preflight": {
+    "mode": "advisory_only",
+    "only_blocking_check": "worker_home_checksums"
+  },
+  "install_groups": {
+    "common-pypi": {
+      "requirements_file": "requirements-common-lock.txt",
+      "index_url": "https://pypi.org/simple",
+      "no_deps": true
+    },
+    "gpu-nvidia-pypi": {
+      "requirements_file": "requirements-gpu-pypi-lock.txt",
+      "index_url": "https://pypi.org/simple",
+      "no_deps": true
+    },
+    "gpu-paddle-cu126": {
+      "requirements_file": "requirements-gpu-lock.txt",
+      "index_url": "https://www.paddlepaddle.org.cn/packages/stable/cu126/",
+      "no_deps": true
+    },
+    "cpu-paddle": {
+      "requirements_file": "requirements-cpu-lock.txt",
+      "index_url": "https://www.paddlepaddle.org.cn/packages/stable/cpu/",
+      "no_deps": true
+    }
+  },
+  "profiles": {
+    "gpu": {
+      "paddle_distribution": "paddlepaddle-gpu",
+      "paddle_version": "3.3.1",
+      "install_groups": [
+        "common-pypi",
+        "gpu-nvidia-pypi",
+        "gpu-paddle-cu126"
+      ],
+      "estimated_runtime_download_gib_min": 4.3,
+      "estimated_runtime_download_gib_max": 4.8,
+      "estimated_runtime_installed_gib": 6.1,
+      "estimate_note": "Model PaddleOCR-VL cache is additional and varies by source/version."
+    },
+    "cpu": {
+      "paddle_distribution": "paddlepaddle",
+      "paddle_version": "3.3.1",
+      "install_groups": [
+        "common-pypi",
+        "cpu-paddle"
+      ],
+      "estimated_runtime_download_gib_min": 0.8,
+      "estimated_runtime_download_gib_max": 1.4,
+      "estimated_runtime_installed_gib": 2.0,
+      "estimate_note": "Conservative engineering estimate inferred from the verified GPU environment, not yet measured on a clean CPU pilot machine. Model cache is additional."
+    }
+  },
+  "packages": {
+    "paddleocr": "3.7.0",
+    "paddlex": "3.7.2"
+  },
+  "model_cache": {
+    "estimated_download_gib_min": 4.5,
+    "estimated_download_gib_max": 5.5,
+    "estimated_installed_gib": 5.5,
+    "estimate_note": "Observed planning range from the previous PaddleOCR-VL 1.6 pilot; the upstream model source can change the exact size. The first run downloads this cache after the approved setup."
+  },
+  "downloads": {
+    "pypi_index_url": "https://pypi.org/simple",
+    "network_probes": [
+      "https://astral.sh/uv/0.11.28/install.ps1",
+      "https://github.com/astral-sh/python-build-standalone/",
+      "https://pypi.org/simple/paddleocr/",
+      "https://www.paddlepaddle.org.cn/packages/stable/cpu/",
+      "https://www.paddlepaddle.org.cn/packages/stable/cu126/",
+      "https://paddle-model-ecology.bj.bcebos.com/"
+    ]
+  },
+  "cache_environment": {
+    "PADDLE_PDX_MODEL_SOURCE": "BOS",
+    "PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK": "True"
+  },
+  "ocr_config": {
+    "engine": "PaddleOCR-VL",
+    "pipeline_version": "v1.6",
+    "dpi": 220,
+    "page_batch_size": 1,
+    "max_new_tokens": 1024,
+    "page_timeout_seconds": 1200,
+    "vl_rec_max_concurrency": 1,
+    "use_ocr_for_image_block": true,
+    "use_chart_recognition": false,
+    "markdown_ignore_labels": [
+      "header_image",
+      "footer_image"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+# Generated portable runtime, dependencies, and model weights
+OCR_WORKER_HOME/.runtime/
+# Real jobs, source documents, result packages, and logs
+OCR_WORKER_HOME/inbox/
+OCR_WORKER_HOME/jobs/
+OCR_WORKER_HOME/outbox/
+OCR_WORKER_HOME/logs/
+*.zip
+*.pdf
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+# Local editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

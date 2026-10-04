@@ -1,0 +1,7 @@
+*.md text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.sha256 -text
+examples/synthetic-job/input/** binary
+# Must be last: exact original starter bytes are part of the runtime contract.
+OCR_WORKER_HOME/** -text

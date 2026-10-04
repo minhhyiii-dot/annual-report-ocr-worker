@@ -1,0 +1,13 @@
+Bạn đang đứng trong thư mục OCR Worker Home. Hãy đọc toàn bộ START_HERE.md và làm đúng
+runbook đó. Trước tiên chỉ chạy lệnh doctor read-only rồi báo lại profile đề xuất, cảnh
+báo của máy, thành phần/dung lượng/thư mục setup dự kiến và hỏi tôi có đồng ý setup hay
+không. Không tự thêm -ApprovedByUser trước khi tôi đồng ý. Sau khi được đồng ý, setup
+runtime local, import ZIP trong inbox, chạy đúng job, resume nếu cần và pack kết quả.
+Không sửa output OCR, không crop/merge/QA/promote và không tự upload RESULT ZIP.
+Worker Home có thể nằm ở bất kỳ vị trí nào trên máy, kể cả OneDrive. Không tự copy/move
+Worker Home, không tạo symlink/junction/filesystem link hoặc wrapper, và không sửa file
+trong worker/ để né lỗi. Nếu gặp lỗi thì dừng thao tác né tránh và báo nguyên lỗi cho tôi.
+Không ghép script hoặc runtime dở dang từ một Worker Home/Starter cũ vào bản hiện tại.
+Khi báo lỗi, ghi nguyên lệnh, profile/job ID, lỗi cuối và kết quả doctor/status gần nhất.
+Nếu lỗi có `engine stderr tail`, chép nguyên cả cụm; có thể đọc các event đã che đường dẫn
+trong `jobs\<job_id>\logs\run.jsonl` để giải thích nhưng không sửa hoặc tự upload log.
