@@ -28,7 +28,7 @@ examples/
 tests/test_core.py          Dependency-free integrity and core import/status checks
 ```
 
-The original checksum manifest covers **14 files**. Together with the manifest, the starter contains 15 files. Added documentation, examples, tests, and Git metadata stay outside `OCR_WORKER_HOME` because its `doctor` rejects unexpected static files. `.gitattributes` disables text conversion for every original starter file, preserving hashes on Windows clones.
+The original checksum manifest covers **14 files**. Together with the manifest, the starter contains 15 files. Added documentation, examples, tests, and Git metadata stay outside `OCR_WORKER_HOME` because its `doctor` rejects unexpected static files. `.gitattributes` disables text conversion for every original starter file and checksummed synthetic input, preserving hashes on Windows and Linux clones.
 
 The original agent prompt files are retained as historical project artifacts. They describe the worker's operating procedure; they are not required for the synthetic builder or dependency-free tests. No installation or model download occurs just by cloning, building the sample ZIP, or running the tests below.
 

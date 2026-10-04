@@ -2,6 +2,7 @@
 *.py text eol=lf
 *.json text eol=lf
 *.sha256 -text
-examples/synthetic-job/input/** binary
+# Preserve every checksummed synthetic input on all checkout platforms.
+examples/synthetic-job/** -text
 # Must be last: exact original starter bytes are part of the runtime contract.
 OCR_WORKER_HOME/** -text
